@@ -6,7 +6,7 @@ server.use(cors());
 const PORT = 8000;
 
 server.get("/", (req, res) => {
-  res.send("hello world1");
+  res.send(["hello world1", "hello Saruul"]);
 });
 
 server.listen(PORT, () => {
