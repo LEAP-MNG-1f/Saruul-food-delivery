@@ -31,6 +31,7 @@ export default function Home() {
         />
         <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
           <div>Full delivery Project</div>
+          <p>{data}</p>
         </ol>
 
         <div className="flex gap-4 items-center flex-col sm:flex-row">
