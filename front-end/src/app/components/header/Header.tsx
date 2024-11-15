@@ -4,9 +4,9 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
-export default function Header() {
+export const Header = () => {
   return (
-    <div className="flex flex-row gap-2 justify-around mt-[100px]">
+    <div className="flex flex-row gap-2 mt-[100px] container m-auto justify-between max-w-[1200px]">
       <div className="flex gap-6">
         <LocalDiningIcon style={{ width: "40px", height: "40px" }} />
         <Button variant="text" style={{ color: "black" }}>
@@ -27,4 +27,4 @@ export default function Header() {
       </div>
     </div>
   );
-}
+};

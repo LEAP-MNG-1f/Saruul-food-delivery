@@ -1,8 +1,9 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import Header from "./components/header/Header";
+import { Header } from "./components/header/Header";
 import { Hero } from "./components/hero/Hero";
+import { Category } from "./components/card/Category";
 
 export default function Home() {
   const [data, setData] = useState([]);
@@ -24,6 +25,7 @@ export default function Home() {
     <div>
       <Header />
       <Hero />
+      <Category />
     </div>
   );
 }
