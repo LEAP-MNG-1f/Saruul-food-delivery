@@ -1,9 +1,9 @@
 import React from "react";
 
 type CardProps = {
-  img: string;
-  amount: number;
   title: string;
+  amount: number;
+  img: string;
 };
 
 export const Card = ({ img, title, amount }: CardProps) => {
