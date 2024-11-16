@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Header } from "./components/header/Header";
 import { Hero } from "./components/hero/Hero";
 import { Category } from "./components/card/Category";
+import { Footer } from "./components/footer/Footer";
 
 export default function Home() {
   const [data, setData] = useState([]);
@@ -26,6 +27,7 @@ export default function Home() {
       <Header />
       <Hero />
       <Category />
+      <Footer />
     </div>
   );
 }
