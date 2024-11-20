@@ -1,19 +1,19 @@
 import React from "react";
 
 type CardProps = {
-  title: string;
-  amount: number;
-  img: string;
+  name: string;
+  price: number;
+  image: string;
 };
 
-export const Card = ({ img, title, amount }: CardProps) => {
+export const Card = ({ image, name, price }: CardProps) => {
   return (
     <div className="overflow-hidden rounded-lg shadow-md">
       <div>
-        <img src={img} alt={title} className="w-full h-48 object-cover" />
+        <img src={image} alt={name} className="w-full h-48 object-cover" />
         <div className="p-4">
-          <p className="font-bold text-lg">{title}</p>
-          <p className="text-green-600">₮{amount.toLocaleString()}</p>
+          <p className="font-bold text-lg">{name}</p>
+          <p className="text-green-600">₮{price.toLocaleString()}</p>
         </div>
       </div>
     </div>
