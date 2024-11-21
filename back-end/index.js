@@ -2,12 +2,14 @@ import express from "express";
 import cors from "cors";
 import { v2 as cloudinary } from 'cloudinary';
 import dotenv from 'dotenv'
+import connectionDb from "./connectDb.js";
 
 const server = express();
 server.use(cors());
+dotenv.config()
 const PORT = 8000;
 
-server.get("/", (req, res) => {
+server.get("/saruul", (req, res) => {
   res.send(["hello world1", "hello Saruul"]);
 });
 
@@ -41,6 +43,17 @@ server.post("/image-upload", async (req, res) => {
   }
 });
 
+server.get("/", async (req, res) => {
+
+  const db = await connectionDb();
+  let collection = db.collection("movies");
+  let result = await collection.find().limit(10).toArray();
+
+  res.json({
+    success: true,
+    data: result
+  })
+})
 
 server.listen(PORT, () => {
   console.log(`server ajillaa http://localhost:${PORT}`);
