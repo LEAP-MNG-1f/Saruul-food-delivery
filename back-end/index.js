@@ -3,6 +3,7 @@ import cors from "cors";
 import { v2 as cloudinary } from 'cloudinary';
 import dotenv from 'dotenv'
 import connectionDb from "./connectDb.js";
+import { ObjectId } from "mongodb"
 
 const server = express();
 server.use(cors());
@@ -54,6 +55,69 @@ server.get("/", async (req, res) => {
     data: result
   })
 })
+
+server.post("/create-user", async (req, response) => {
+  const db = await connectionDb();
+
+  const collection = db.collection("product");
+  const result = await collection.insertOne(
+    {
+      name: "IPhone17",
+      email: "Saruul@gmail.com",
+      price:"12800000"
+    },
+ );
+
+  response.json({
+    succes: true,
+    data: result,
+  });
+});
+
+server.put("/update-user", async (req, response) => {
+  try {
+    const db = await connectionDb();
+    const collection = db.collection("product");
+
+    const result = await collection.updateMany(
+      {
+        _id: new ObjectId("6740035d806fed5521152a27"),  
+      },
+      {
+        $set: {
+          owner: "saruul",  
+          price:"8800",
+          date: new Date()  
+        }
+      }
+    );
+    response.json({
+      success: true,
+      data: result,
+    });
+  } catch (error) {
+    console.error("Update failed:", error);
+    response.status(500).json({
+      success: false,
+      message: "An error occurred during the update operation.",
+      error: error.message,
+    });
+  }
+});
+
+server.delete("/delete-user", async (req, response) => {
+  const db = await connectionDb();
+
+  const collection = db.collection("product");
+  const result = await collection.deleteOne({
+    _id: new ObjectId("6740035d806fed5521152a27"),
+  });
+
+  response.json({
+    succes: true,
+    data: result,
+  });
+});
 
 server.listen(PORT, () => {
   console.log(`server ajillaa http://localhost:${PORT}`);
