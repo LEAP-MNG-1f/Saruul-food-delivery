@@ -17,7 +17,7 @@ export const Footer = () => {
                 contact
               </p>
             </Link>
-            <Link href="/category">
+            <Link href="/categories">
               <p className="text-white font-bold text-[20px] underline">
                 category
               </p>
