@@ -2,11 +2,10 @@ import express from "express";
 import cors from "cors";
 import { v2 as cloudinary } from "cloudinary";
 import dotenv from "dotenv";
-import connectionDb from "./connectDb.js";
-import { ObjectId } from "mongodb";
 import mongoose from "mongoose";
-import animeModel from "./model/anime.js";
 import userRouter from "./routes/userRoute.js";
+import foodRouter from "./routes/foodRoute.js";
+import orderRouter from "./routes/orderRoute.js";
 
 const server = express();
 server.use(cors());
@@ -14,35 +13,12 @@ dotenv.config();
 const PORT = 8000;
 
 server.use("/api", userRouter);
+server.use("/api", orderRouter);
+server.use("/api", foodRouter);
 
 mongoose.connect(
-  "mongodb+srv://ace12d192:wap3TZLOZeJlgLIq@cluster0.s6jvj.mongodb.net/food-delivery"
+  "mongodb+srv://saruultumed11:ntlSVQ7OJxT9xRiH@clustersaruul.c6pcm.mongodb.net/foodDB"
 );
-
-server.post("/create", async (req, res) => {
-  const result = await animeModel.create({
-    name: "narutoooo",
-    year: 1997,
-  });
-  res.json({
-    success: true,
-    data: result,
-  });
-});
-
-server.delete("/delete", async (req, res) => {
-  const result = await animeModel.deleteMany({
-    genre: "animes",
-  });
-  res.json({
-    success: true,
-    data: result,
-  });
-});
-
-server.get("/saruul", (req, res) => {
-  res.send(["hello world1", "hello Saruul"]);
-});
 
 server.post("/image-upload", async (req, res) => {
   try {
@@ -132,20 +108,6 @@ server.post("/image-upload", async (req, res) => {
 //       error: error.message,
 //     });
 //   }
-// });
-
-// server.delete("/delete-user", async (req, response) => {
-//   const db = await connectionDb();
-
-//   const collection = db.collection("product");
-//   const result = await collection.deleteOne({
-//     _id: new ObjectId("6740035d806fed5521152a27"),
-//   });
-
-//   response.json({
-//     succes: true,
-//     data: result,
-//   });
 // });
 
 server.listen(PORT, () => {

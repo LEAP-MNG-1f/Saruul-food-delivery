@@ -22,7 +22,10 @@ export const AddressForm = () => {
             >
               <option value="">Сонгох...</option>
               <option value="bayanzurkh">Баянзүрх</option>
+              <option value="bayanzurkh">Чингэлтэй</option>
               <option value="sukhbaatar">Сүхбаатар</option>
+              <option value="sukhbaatar">Сонгино хайрхан</option>
+              <option value="sukhbaatar">Хан уул</option>
             </select>
           </div>
   
@@ -40,6 +43,10 @@ export const AddressForm = () => {
               <option value="">Сонгох...</option>
               <option value="1">1-р хороо</option>
               <option value="2">2-р хороо</option>
+              <option value="2">3-р хороо</option>
+              <option value="2">4-р хороо</option>
+              <option value="2">5-р хороо</option>
+              <option value="2">6-р хороо</option>
             </select>
           </div>
   
@@ -55,8 +62,9 @@ export const AddressForm = () => {
               className="w-full border border-gray-300 rounded-lg p-3 text-gray-700 focus:ring-2 focus:ring-blue-500 focus:outline-none"
             >
               <option value="">Сонгох...</option>
-              <option value="street1">Гандангийн гудамж</option>
-              <option value="street2">Зүүн 4 зам</option>
+              <option value="street1">Сеэөлийн гудамж</option>
+              <option value="street2">Токиогийн гудамж</option>
+              <option value="street2">Нев ёоркын гудамж</option>
             </select>
           </div>
   
