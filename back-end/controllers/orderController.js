@@ -19,7 +19,10 @@ const createOrder = (req, res) => {
 };
 
 const getAllOrders = async (req, res) => {
-  const result = await orderModel.find().populate("customer");
+  const result = await orderModel
+    .find()
+    .populate("customer")
+    .populate("foodIds");
   res.json({
     success: true,
     data: result,
