@@ -1,10 +1,10 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { Header } from "./components/header/Header";
-import { Hero } from "./components/hero/Hero";
-import { Category } from "./components/card/Category";
-import { Footer } from "./components/footer/Footer";
+import { Header } from "./_components/header/Header";
+import { Hero } from "./_components/hero/Hero";
+import { Category } from "./_components/card/Category";
+import { Footer } from "./_components/footer/Footer";
 
 export default function Home() {
   const [data, setData] = useState([]);

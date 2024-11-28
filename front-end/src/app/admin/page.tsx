@@ -2,8 +2,8 @@
 
 import React from "react";
 import MainAdminPage from "./Admin";
-import { Footer } from "../components/footer/Footer";
-import { Header } from "../components/header/Header";
+import { Footer } from "../_components/footer/Footer";
+import { Header } from "../_components/header/Header";
 
 export default function page() {
   return (

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Card } from "../components/card/Card";
+import { Card } from "../_components/card/Card";
 
 import CreateFoodModal from "./AddModal";
 
@@ -38,7 +38,7 @@ type Food = {
   name: string;
   price: number;
   image: string;
-  ingredient?: string;
+  ingeredient?: string;
 };
 
 type ApiResponse = {

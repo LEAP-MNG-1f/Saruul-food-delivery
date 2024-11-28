@@ -93,8 +93,6 @@ export const Category: React.FC = () => {
     fetchData();
   }, []);
 
-  const categories = ["Хямдралтай", "Үндсэн хоол", "Салад ба зууш", "Амттан"];
-
   const handleCardClick = (recipe: FoodItem) => {
     setSelectedRecipe(recipe);
     setOpen(true);

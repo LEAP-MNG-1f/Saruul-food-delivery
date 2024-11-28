@@ -1,8 +1,8 @@
 "use client";
 
-import AllFood from "../components/card/FilterCategory";
-import { Footer } from "../components/footer/Footer";
-import { Header } from "../components/header/Header";
+import AllFood from "../_components/card/FilterCategory";
+import { Footer } from "../_components/footer/Footer";
+import { Header } from "../_components/header/Header";
 
 export default function Home() {
   return (

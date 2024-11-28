@@ -6,6 +6,7 @@ import mongoose from "mongoose";
 import userRouter from "./routes/userRoute.js";
 import foodRouter from "./routes/foodRoute.js";
 import orderRouter from "./routes/orderRoute.js";
+import categoryRouter from "./routes/categoryRoute.js";
 
 const server = express();
 server.use(cors());
@@ -15,6 +16,7 @@ const PORT = 8000;
 server.use("/api", userRouter);
 server.use("/api", orderRouter);
 server.use("/api", foodRouter);
+server.use("/api", categoryRouter);
 
 mongoose.connect(
   "mongodb+srv://saruultumed11:ntlSVQ7OJxT9xRiH@clustersaruul.c6pcm.mongodb.net/foodDB"
