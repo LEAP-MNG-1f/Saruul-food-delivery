@@ -1,19 +1,33 @@
 "use client";
+
 import { useEffect, useState } from "react";
+import RecipeDialog from "./RecipeDialog";
 
 export type FoodItem = {
-  id?: number;
+  _id: string;
   name: string;
-  image: string;
-  category: string;
   price: number;
+  image: string;
+  categoryId: {
+    _id: string;
+    name: string;
+    __v: number;
+  };
   ingeredient: string;
+  __v: number;
 };
 
 const AllFood = () => {
+  const [open, setOpen] = useState(false);
   const [foodData, setFoodData] = useState<FoodItem[]>([]);
   const [filteredFoodData, setFilteredFoodData] = useState<FoodItem[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
+  const [selectedRecipe, setSelectedRecipe] = useState<FoodItem | null>(null);
+  const [cart, setCart] = useState<FoodItem[]>([]);
+
+  const addToCart = (item: FoodItem) => {
+    setCart((prevCart) => [...prevCart, item]);
+  };
 
   const fetchData = async () => {
     try {
@@ -22,7 +36,7 @@ const AllFood = () => {
       const realData = responsedata?.data;
       setFoodData(realData);
     } catch (error) {
-      console.log(error);
+      console.error("Error fetching data:", error);
     }
   };
 
@@ -31,90 +45,91 @@ const AllFood = () => {
   }, []);
 
   useEffect(() => {
-    setFilteredFoodData(foodData);
+    setFilteredFoodData(foodData); // Display all foods by default
   }, [foodData]);
 
-  const filterByCategory = (category: string) => {
-    setSelectedCategory(category);
-    const filtered = foodData.filter((food) => food.category === category);
-    setFilteredFoodData(filtered);
+  // Handle category filtering
+  const handleCategoryClick = (categoryId: string) => {
+    setSelectedCategory(categoryId);
+    if (categoryId === "") {
+      setFilteredFoodData(foodData); // Show all if no category selected
+    } else {
+      setFilteredFoodData(
+        foodData.filter((food) => food.categoryId._id === categoryId)
+      );
+    }
   };
 
-  const showAllFood = () => {
-    setSelectedCategory("");
-    setFilteredFoodData(foodData);
+  const handleCardClick = (recipe: FoodItem) => {
+    setSelectedRecipe(recipe);
+    setOpen(true);
   };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const uniqueCategories = Array.from(
+    new Map(
+      foodData.map((food) => [food.categoryId._id, food.categoryId])
+    ).values()
+  );
 
   return (
-    <div className="container max-w-[1200px] m-auto">
-      <div className="flex justify-center mt-10 space-x-4">
+    <div className="container max-w-[1200px] m-auto mt-10">
+      {/* Category Buttons */}
+      <div className="flex flex-wrap gap-4 justify-center mb-8">
         <button
-          className={`px-[80px] py-3 font-bold rounded-lg ${
-            selectedCategory === ""
-              ? "bg-green-500 text-white"
-              : "bg-gray-200 text-black"
+          key="all"
+          onClick={() => handleCategoryClick("")}
+          className={`px-4 py-2 rounded-lg ${
+            selectedCategory === "" ? "bg-green-500 text-white" : "bg-gray-200"
           }`}
-          onClick={showAllFood}
         >
-          Бүгд
+          Бүх хоол
         </button>
-        <button
-          className={`px-[80px] py-3 font-bold rounded-lg ${
-            selectedCategory === "Хямдралтай"
-              ? "bg-green-500 text-white"
-              : "bg-gray-200 text-black"
-          }`}
-          onClick={() => filterByCategory("Хямдралтай")}
-        >
-          Хямдралтай
-        </button>
-        <button
-          className={`px-[80px] py-3 font-bold rounded-lg ${
-            selectedCategory === "Салад ба зууш"
-              ? "bg-green-500 text-white"
-              : "bg-gray-200 text-black"
-          }`}
-          onClick={() => filterByCategory("Салад ба зууш")}
-        >
-          Салад ба зууш
-        </button>
-        <button
-          className={`px-[80px] py-3 font-bold rounded-lg ${
-            selectedCategory === "Амттан"
-              ? "bg-green-500 text-white"
-              : "bg-gray-200 text-black"
-          }`}
-          onClick={() => filterByCategory("Амттан")}
-        >
-          Амттан
-        </button>
-        <button
-          className={`px-[80px] py-3 font-bold rounded-lg ${
-            selectedCategory === "Үндсэн хоол"
-              ? "bg-green-500 text-white"
-              : "bg-gray-200 text-black"
-          }`}
-          onClick={() => filterByCategory("Үндсэн хоол")}
-        >
-          Үндсэн хоол
-        </button>
+        {uniqueCategories.map((category) => (
+          <button
+            key={category._id}
+            onClick={() => handleCategoryClick(category._id)}
+            className={`px-4 py-2 rounded-lg ${
+              selectedCategory === category._id
+                ? "bg-green-500 text-white"
+                : "bg-gray-200"
+            }`}
+          >
+            {category.name}
+          </button>
+        ))}
       </div>
+
       {/* Food Items */}
-      <div className="container m-auto mt-10 mb-10">
-        <div className="grid grid-cols-4 gap-10">
-          {filteredFoodData.map((food, index) => (
-            <div key={index} className="border p-4 rounded-lg">
-              <img
-                src={food.image}
-                alt={food.name}
-                className="w-full h-40 object-cover rounded-md"
-              />
-              <h3 className="text-xl font-bold mt-2">{food.name}</h3>
-              <p className="text-gray-500">{food.category}</p>
-              <p className="text-green-500 font-semibold">{food.price}₮</p>
-            </div>
-          ))}
-        </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-8">
+        {filteredFoodData.map((food) => (
+          <div
+            key={food._id}
+            onClick={() => handleCardClick(food)}
+            className="border p-4 rounded-lg shadow-md hover:shadow-lg transition"
+          >
+            <img
+              src={food.image}
+              alt={food.name}
+              className="w-full h-40 object-cover rounded-md"
+            />
+            <h3 className="text-xl font-bold mt-2">{food.name}</h3>
+            <p className="text-green-500 font-semibold">
+              {food.price.toLocaleString()}₮
+            </p>
+          </div>
+        ))}
+        {selectedRecipe && (
+          <RecipeDialog
+            selectedRecipe={selectedRecipe}
+            open={open}
+            onClose={handleClose}
+            onAddToCart={addToCart}
+          />
+        )}
       </div>
     </div>
   );
