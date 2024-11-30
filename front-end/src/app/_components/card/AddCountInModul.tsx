@@ -33,7 +33,7 @@ export default function BadgeVisibility() {
     >
       <div>
         <ButtonGroup>
-          <div className="flex justify-between gap-20">
+          <div className="flex justify-between gap-17">
             <Button
               aria-label="reduce"
               onClick={() => {
@@ -42,7 +42,17 @@ export default function BadgeVisibility() {
             >
               <RemoveIcon fontSize="small" />
             </Button>
-            <Badge color="success">{count}</Badge>
+            <Badge
+              style={{
+                color: "black",
+                display: "flex",
+                justifyItems: "center",
+                alignItems: "center",
+                marginLeft: "30px",
+              }}
+            >
+              {count}
+            </Badge>
             <Button
               aria-label="increase"
               onClick={() => {

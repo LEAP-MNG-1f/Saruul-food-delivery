@@ -21,18 +21,10 @@ const RecipeDialog: React.FC<RecipeDialogProps> = ({
 }) => {
   if (!selectedRecipe) return null;
 
-  // Handle adding to cart and saving to localStorage
   const handleAddToCart = () => {
-    // Check if cart already exists in localStorage
     const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
-
-    // Add the new item to the cart
     const updatedCart = [...existingCart, selectedRecipe];
-
-    // Save the updated cart to localStorage
     localStorage.setItem("cart", JSON.stringify(updatedCart));
-
-    // Call the provided onAddToCart function, in case it's needed elsewhere
     onAddToCart(selectedRecipe);
   };
 
@@ -70,7 +62,7 @@ const RecipeDialog: React.FC<RecipeDialogProps> = ({
                 <ListItemButton
                   style={{ background: "green", borderRadius: "15px" }}
                   autoFocus
-                  onClick={handleAddToCart} // Updated function call
+                  onClick={handleAddToCart} 
                 >
                   <ListItemText
                     primary="Сагслах"

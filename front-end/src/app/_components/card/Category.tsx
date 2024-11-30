@@ -66,7 +66,7 @@ export const Category: React.FC<{ addToCart: (item: FoodItem) => void }> = ({
           </div>
         </div>
       ))}
-
+      {/* ------------------dialog------------------ */}
       {selectedRecipe && (
         <RecipeDialog
           selectedRecipe={selectedRecipe}

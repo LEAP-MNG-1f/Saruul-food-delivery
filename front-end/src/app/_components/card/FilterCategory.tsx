@@ -41,18 +41,15 @@ const AllFood = () => {
   };
 
   useEffect(() => {
+    setFilteredFoodData(foodData);
     fetchData();
-  }, []);
-
-  useEffect(() => {
-    setFilteredFoodData(foodData); // Display all foods by default
   }, [foodData]);
 
   // Handle category filtering
   const handleCategoryClick = (categoryId: string) => {
     setSelectedCategory(categoryId);
     if (categoryId === "") {
-      setFilteredFoodData(foodData); // Show all if no category selected
+      setFilteredFoodData(foodData);
     } else {
       setFilteredFoodData(
         foodData.filter((food) => food.categoryId._id === categoryId)
@@ -86,7 +83,7 @@ const AllFood = () => {
             selectedCategory === "" ? "bg-green-500 text-white" : "bg-gray-200"
           }`}
         >
-          Бүх хоол
+          бүх хоол
         </button>
         {uniqueCategories.map((category) => (
           <button
