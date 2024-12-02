@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import RecipeDialog from "./RecipeDialog";
+import { uniqueId } from "lodash";
 
 export type FoodItem = {
   _id: string;
@@ -15,6 +16,7 @@ export type FoodItem = {
   };
   ingeredient: string;
   __v: number;
+  quantity: number;
 };
 
 const AllFood = () => {
@@ -104,7 +106,7 @@ const AllFood = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-8">
         {filteredFoodData.map((food) => (
           <div
-            key={food._id}
+            key={uniqueId()}
             onClick={() => handleCardClick(food)}
             className="border p-4 rounded-lg shadow-md hover:shadow-lg transition"
           >

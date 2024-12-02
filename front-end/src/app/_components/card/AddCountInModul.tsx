@@ -8,8 +8,17 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import MailIcon from "@mui/icons-material/Mail";
 import Switch from "@mui/material/Switch";
 import FormControlLabel from "@mui/material/FormControlLabel";
+import { CartItem } from "./Cart";
 
-export default function BadgeVisibility() {
+type updateQuantityType = {
+  updateQuantity: (item: CartItem, newQuantity: number) => void;
+  item: CartItem;
+};
+
+export default function BadgeVisibility({
+  updateQuantity,
+  item,
+}: updateQuantityType) {
   const [count, setCount] = React.useState(1);
   const [invisible, setInvisible] = React.useState(false);
 
@@ -36,9 +45,7 @@ export default function BadgeVisibility() {
           <div className="flex justify-between gap-17">
             <Button
               aria-label="reduce"
-              onClick={() => {
-                setCount(Math.max(count - 1, 0));
-              }}
+              onClick={() => updateQuantity(item, item.quantity - 1)}
             >
               <RemoveIcon fontSize="small" />
             </Button>
@@ -51,13 +58,11 @@ export default function BadgeVisibility() {
                 marginLeft: "30px",
               }}
             >
-              {count}
+              {item.quantity}
             </Badge>
             <Button
               aria-label="increase"
-              onClick={() => {
-                setCount(count + 1);
-              }}
+              onClick={() => updateQuantity(item, item.quantity + 1)}
             >
               <AddIcon fontSize="small" />
             </Button>

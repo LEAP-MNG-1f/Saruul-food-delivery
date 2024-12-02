@@ -1,8 +1,15 @@
 "use client";
+import { Order } from "@/app/admin/Order";
 import { DataSaverOff } from "@mui/icons-material";
-import React from "react";
+import React, { useState } from "react";
+import { OrderSummary } from "./OrderSummary";
 
 export const AddressForm = () => {
+  // const [orderDetails, setOrderDetails] = useState({
+  //   district: "",
+  //   khoroo: "",
+  //   apartment: "",
+  // });
   return (
     <div className="bg-white shadow-lg rounded-lg p-6 space-y-6">
       <h2 className="text-xl font-semibold text-gray-800">
@@ -114,40 +121,6 @@ export const AddressForm = () => {
           </label>
         </div>
       </form>
-    </div>
-  );
-};
-
-export const OrderSummary = () => {
-  return (
-    <div className="bg-white shadow-lg rounded-lg p-6 space-y-6">
-      <h2 className="text-xl font-semibold text-gray-800">
-        Захиалга баталгаажуулах
-      </h2>
-      <div className="flex items-center gap-4">
-        <img
-          src="https://via.placeholder.com/100"
-          alt="Main Pizza"
-          className="w-20 h-20 object-cover rounded-lg"
-        />
-        <div>
-          <h3 className="text-lg font-semibold text-gray-800">Main Pizza</h3>
-          <p className="text-gray-600">
-            Хулуу, төмс, лууван, сонгино, цөцгий тос, самрын үр
-          </p>
-        </div>
-      </div>
-
-      <div className="text-right">
-        <p className="text-gray-600">Нийт төлөх дүн:</p>
-        <p className="text-green-600 text-2xl font-bold">34,800₮</p>
-      </div>
-      <button
-        className="w-full bg-green-500 text-white py-3 px-6 rounded-lg font-medium hover:bg-green-600 transition-all"
-        onClick={() => alert("Захиалга хийгдлээ!")}
-      >
-        Захиалах
-      </button>
     </div>
   );
 };

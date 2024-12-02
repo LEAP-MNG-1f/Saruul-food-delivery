@@ -21,7 +21,7 @@ export const Header: React.FC<HeaderProps> = () => {
   };
 
   return (
-    <div className="flex flex-row gap-2 mt-[100px] container m-auto justify-between max-w-[1200px]">
+    <div className="flex flex-row gap-2 mt-[20px] container m-auto justify-between max-w-[1200px]">
       <div className="flex gap-6">
         <LocalDiningIcon style={{ width: "40px", height: "40px" }} />
         <Link href="/">

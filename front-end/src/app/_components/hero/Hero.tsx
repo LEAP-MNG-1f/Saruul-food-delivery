@@ -10,20 +10,19 @@ export const Hero = () => {
               <p className="text-white font-extrabold text-[36px]">
                 Saruul's food delivery
               </p>
-              <p className="text-white font-bold text-[25px] w-[800px]">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Repellendus, cumque?
+              <p className="text-white font-bold text-[25px] w-[800px] mt-8">
+                Амттай хоолоор таныг хангана
               </p>
             </div>
             <div>
-              <div className="absolute top-[200px] right-[400px] ">
+              <div className="absolute top-[200px] right-[600px] ">
                 <img
                   src="https://i.ytimg.com/vi/vljiaOFkxkA/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDZ79Mu2Lhfhc5eWazYwYaPBTWVHg"
                   alt=""
                   className="rounded-full w-[400px] h-[400px]"
                 />
               </div>
-              <div className="absolute top-[400px] right-[300px] ">
+              <div className="absolute top-[400px] right-[550px] ">
                 <img
                   src="https://www.escapetomongolia.com/__data/assets/image/0023/6566/varieties/medium.jpg"
                   alt=""

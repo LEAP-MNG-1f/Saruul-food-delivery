@@ -1,32 +1,65 @@
 import { orderModel } from "../model/order.model.js";
 
-const createOrder = (req, res) => {
-  const result = orderModel.create({
-    customer: "67468882c612a0d439bec45d",
-    orderNumber: 3,
-    foodIds: ["674693697262e70991b39eb9", "67469b88478790e320078e99"],
-    totalPrice: 12000,
-    process: "active",
-    createDate: new Date(),
-    district: "хан уул",
-    Khoroo: "12-р хороо",
-    Apartment: "Moriton residence",
-  });
-  res.json({
-    success: true,
-    data: result,
-  });
+const createOrder = async (req, res) => {
+  try {
+    const {
+      customer,
+      orderNumber,
+      foodIds,
+      totalPrice,
+      process,
+      district,
+      Khoroo,
+      Apartment,
+      phone,
+      paymentType,
+      detail,
+    } = req.body;
+
+    const result = await orderModel.create({
+      customer,
+      orderNumber,
+      foodIds,
+      totalPrice,
+      process: process || "active",
+      createDate: new Date(),
+      district,
+      Khoroo,
+      Apartment,
+      phone,
+      paymentType: paymentType,
+      detail,
+    });
+
+    res.json({
+      success: true,
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
 };
 
 const getAllOrders = async (req, res) => {
-  const result = await orderModel
-    .find()
-    .populate("customer")
-    .populate("foodIds");
-  res.json({
-    success: true,
-    data: result,
-  });
+  try {
+    const result = await orderModel
+      .find()
+      .populate("customer")
+      .populate("foodIds");
+
+    res.json({
+      success: true,
+      data: result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
 };
 
 export { createOrder, getAllOrders };

@@ -54,15 +54,15 @@ const RecipeDialog: React.FC<RecipeDialogProps> = ({
                 <h4 className="font-bold text-lg">Орц:</h4>
                 <p>{selectedRecipe.ingeredient}</p>
               </div>
-              <div className="mt-3">
+              {/* <div className="mt-3">
                 <p className="font-bold text-[20px] mt-2">тоо</p>
                 <BadgeVisibility />
-              </div>
+              </div> */}
               <ListItem disableGutters>
                 <ListItemButton
                   style={{ background: "green", borderRadius: "15px" }}
                   autoFocus
-                  onClick={handleAddToCart} 
+                  onClick={handleAddToCart}
                 >
                   <ListItemText
                     primary="Сагслах"
