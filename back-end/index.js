@@ -30,8 +30,8 @@ server.post("/image-upload", async (req, res) => {
   try {
     cloudinary.config({
       cloud_name: "de44zpryf",
-      api_key: "576363553371416",
-      api_secret: "e-wPQmmQzYbfl1iuJqWAiYkq714",
+      api_key: CLOUDINARY_API_KEY,
+      api_secret: CLOUDINARY_API_SECRET,
     });
 
     const uploadResults = [];

@@ -33,7 +33,9 @@ const AllFood = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch("http://localhost:8000/api/foods");
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_POINT}/api/foods`
+      );
       const responsedata = await response.json();
       const realData = responsedata?.data;
       setFoodData(realData);

@@ -79,7 +79,7 @@ export const OrderSummary = () => {
 
       // Send POST request to create order
       const response = await axios.post(
-        "http://localhost:8000/api/orders",
+        `${process.env.NEXT_PUBLIC_BACKEND_POINT}/api/orders`,
         orderPayload
       );
 

@@ -43,7 +43,9 @@ export const Order: FC<OrderPropsType> = ({ value }) => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch("http://localhost:8000/api/orders");
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_BACKEND_POINT}/api/orders`
+        );
         if (!response.ok) {
           throw new Error(`Error: ${response.statusText}`);
         }
@@ -61,7 +63,7 @@ export const Order: FC<OrderPropsType> = ({ value }) => {
   const updatedProcess = async (orderId: string, newProcess: string) => {
     try {
       const response = await fetch(
-        `http://localhost:8000/api/patch-order-process/${orderId}`,
+        `${process.env.NEXT_PUBLIC_BACKEND_POINT}/api/patch-order-process/${orderId}`,
         {
           method: "PATCH", // Use PATCH for partial updates
           headers: {

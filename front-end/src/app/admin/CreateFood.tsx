@@ -39,7 +39,9 @@ const CreateFood = (props: Props) => {
 
   const fetchDataCategory = async () => {
     try {
-      const response = await fetch("http://localhost:8000/api/categories");
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_POINT}/api/categories`
+      );
       const data: CategoryResponse = await response.json();
       setCategoryData(data.data);
     } catch (error) {
@@ -74,10 +76,13 @@ const CreateFood = (props: Props) => {
     }
 
     try {
-      const response = await fetch("http://localhost:8000/api/create-food", {
-        method: "POST",
-        body: formData,
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_POINT}/api/create-food`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
       const data = await response.json();
 
       if (data.success) {

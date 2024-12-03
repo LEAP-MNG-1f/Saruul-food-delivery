@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { Order } from "./Order";
 import { FoodItem } from "../_components/card/FilterCategory";
-import { log } from "console";
 
 type Customer = {
   _id: string;
@@ -35,7 +34,9 @@ export const AdminDashboard = () => {
 
   const fetchDataOrder = async () => {
     try {
-      const response = await fetch("http://localhost:8000/api/orders");
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_POINT}/api/orders`
+      );
 
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);

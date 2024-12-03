@@ -6,13 +6,14 @@ import { FoodItem } from "./FilterCategory";
 import RecipeDialog from "./RecipeDialog";
 
 export const Category = ({}) => {
+  const BACKEND_POINT = process.env.NEXT_PUBLIC_BACKEND_POINT;
   const [open, setOpen] = useState(false);
   const [foodDatas, setFoodDatas] = useState<FoodItem[]>([]);
   const [selectedRecipe, setSelectedRecipe] = useState<FoodItem | null>(null);
 
   const fetchData = async () => {
     try {
-      const response = await fetch("http://localhost:8000/api/foods");
+      const response = await fetch(`${BACKEND_POINT}/api/foods`);
       const responsedata = await response.json();
       const realData: FoodItem[] = responsedata?.data || [];
       setFoodDatas(realData);
