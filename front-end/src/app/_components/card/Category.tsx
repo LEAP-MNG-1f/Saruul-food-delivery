@@ -5,9 +5,7 @@ import { groupBy } from "lodash";
 import { FoodItem } from "./FilterCategory";
 import RecipeDialog from "./RecipeDialog";
 
-export const Category: React.FC<{ addToCart: (item: FoodItem) => void }> = ({
-  addToCart,
-}) => {
+export const Category = ({}) => {
   const [open, setOpen] = useState(false);
   const [foodDatas, setFoodDatas] = useState<FoodItem[]>([]);
   const [selectedRecipe, setSelectedRecipe] = useState<FoodItem | null>(null);
@@ -72,7 +70,6 @@ export const Category: React.FC<{ addToCart: (item: FoodItem) => void }> = ({
           selectedRecipe={selectedRecipe}
           open={open}
           onClose={handleClose}
-          onAddToCart={addToCart}
         />
       )}
     </div>

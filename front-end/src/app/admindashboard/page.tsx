@@ -6,7 +6,6 @@ import { AdminDashboard } from "../admin/Admin-dashboard";
 export default function page() {
   return (
     <div className="flex flex-col items-center">
-      <Header />
       <div className="container flex">
         <AdminDashboard />
       </div>

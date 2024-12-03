@@ -1,19 +1,12 @@
 "use client";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Header } from "./_components/header/Header";
 import { Hero } from "./_components/hero/Hero";
 import { Category } from "./_components/card/Category";
 import { Footer } from "./_components/footer/Footer";
-import AllFood, { FoodItem } from "./_components/card/FilterCategory";
 
 export default function Home() {
   const [data, setData] = useState([]);
-  const [cart, setCart] = useState<FoodItem[]>([]);
-
-  const addToCart = (item: FoodItem) => {
-    setCart((prevCart) => [...prevCart, item]);
-  };
 
   const fetchdata = async () => {
     try {
@@ -32,7 +25,7 @@ export default function Home() {
     <div>
       <Header />
       <Hero />
-      <Category addToCart={addToCart} />
+      <Category />
       <Footer />
     </div>
   );

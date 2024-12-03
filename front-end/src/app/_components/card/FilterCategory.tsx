@@ -129,7 +129,6 @@ const AllFood = () => {
             selectedRecipe={selectedRecipe}
             open={open}
             onClose={handleClose}
-            onAddToCart={addToCart}
           />
         )}
       </div>

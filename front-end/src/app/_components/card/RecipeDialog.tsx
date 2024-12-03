@@ -9,14 +9,12 @@ interface RecipeDialogProps {
   open: boolean;
   selectedRecipe: FoodItem | null;
   onClose: () => void;
-  onAddToCart: (item: FoodItem) => void;
 }
 
 const RecipeDialog: React.FC<RecipeDialogProps> = ({
   open,
   selectedRecipe,
   onClose,
-  onAddToCart,
 }) => {
   if (!selectedRecipe) return null;
 
@@ -24,7 +22,7 @@ const RecipeDialog: React.FC<RecipeDialogProps> = ({
     const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
     const updatedCart = [...existingCart, selectedRecipe];
     localStorage.setItem("cart", JSON.stringify(updatedCart));
-    onAddToCart(selectedRecipe);
+
     onClose();
   };
 
