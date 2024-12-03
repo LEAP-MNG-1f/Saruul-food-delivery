@@ -4,8 +4,6 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import DeleteIcon from "@mui/icons-material/Delete";
 import BadgeVisibility from "./AddCountInModul";
 import axios from "axios";
-import { AddressForm } from "./Delivery";
-import { log } from "console";
 
 export interface CartItem extends FoodItem {
   quantity: number;
@@ -92,7 +90,6 @@ export const OrderSummary = () => {
       }
     } catch (error) {
       console.log(error);
-
       alert("Захиалга үүсгэхэд алдаа гарлаа. Дахин оролдоно уу.");
     } finally {
       setIsLoading(false);
@@ -196,9 +193,11 @@ export const OrderSummary = () => {
             <input
               type="text"
               value={orderDetails.phone}
-              onChange={(e) =>
-                setOrderDetails({ ...orderDetails, phone: e.target.value })
-              }
+              onChange={(e) => {
+                // Replace any non-digit characters with an empty string
+                const numericValue = e.target.value.replace(/\D/g, "");
+                setOrderDetails({ ...orderDetails, phone: numericValue });
+              }}
               id="phone"
               placeholder="Утасны дугаараа оруулна уу"
               className="w-full border border-gray-300 rounded-lg p-3 text-gray-700 focus:ring-2 focus:ring-blue-500 focus:outline-none"

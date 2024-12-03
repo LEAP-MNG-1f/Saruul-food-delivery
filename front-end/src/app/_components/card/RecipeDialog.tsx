@@ -3,12 +3,11 @@ import Dialog from "@mui/material/Dialog";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import { ListItem, ListItemButton, ListItemText } from "@mui/material";
-import BadgeVisibility from "./AddCountInModul";
 import { FoodItem } from "./FilterCategory";
 
 interface RecipeDialogProps {
   open: boolean;
-  selectedRecipe: FoodItem | null; // FoodItem ашиглана
+  selectedRecipe: FoodItem | null;
   onClose: () => void;
   onAddToCart: (item: FoodItem) => void;
 }
@@ -26,6 +25,7 @@ const RecipeDialog: React.FC<RecipeDialogProps> = ({
     const updatedCart = [...existingCart, selectedRecipe];
     localStorage.setItem("cart", JSON.stringify(updatedCart));
     onAddToCart(selectedRecipe);
+    onClose();
   };
 
   return (
@@ -50,14 +50,10 @@ const RecipeDialog: React.FC<RecipeDialogProps> = ({
               <div className="text-lg text-green-600 font-bold">
                 ₮{selectedRecipe.price.toLocaleString()}
               </div>
-              <div className="mt-3">
-                <h4 className="font-bold text-lg">Орц:</h4>
+              <div className="mt-3 mb-[80px]">
+                <h4 className="font-bold text-lg mt-10">Орц:</h4>
                 <p>{selectedRecipe.ingeredient}</p>
               </div>
-              {/* <div className="mt-3">
-                <p className="font-bold text-[20px] mt-2">тоо</p>
-                <BadgeVisibility />
-              </div> */}
               <ListItem disableGutters>
                 <ListItemButton
                   style={{ background: "green", borderRadius: "15px" }}

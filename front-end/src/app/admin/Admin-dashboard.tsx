@@ -2,17 +2,32 @@
 
 import { useEffect, useState } from "react";
 import { Order } from "./Order";
+import { FoodItem } from "../_components/card/FilterCategory";
+import { log } from "console";
 
-export type OrderType = {
+type Customer = {
+  _id: string;
+  name: string;
+  email: string;
+  password: string;
+  phoneNumber: number;
+};
+
+type OrderType = {
+  _id: string;
   orderNumber: number;
   totalPrice: string;
+  paymentType: string;
+  phone: string;
   process: string;
-  createdDate: string;
   district: string;
-  khoroo: string;
-  apartment: string;
-  phoneNumber: string;
-  information: string;
+  Khoroo: string;
+  Apartment: string;
+  detail: string;
+  createDate: string;
+  customer: Customer;
+  foodIds: FoodItem[];
+  __v: number;
 };
 
 export const AdminDashboard = () => {
@@ -74,8 +89,8 @@ export const AdminDashboard = () => {
           </div>
           <div></div>
         </div>
-        {dataOrder?.map((value, id) => {
-          return <Order value={value} key={id} />;
+        {dataOrder?.map((item, id) => {
+          return <Order value={item} key={id} />;
         })}
       </div>
     </div>

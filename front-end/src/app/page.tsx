@@ -30,7 +30,7 @@ export default function Home() {
 
   return (
     <div>
-      <Header addToCart={addToCart} />
+      <Header />
       <Hero />
       <Category addToCart={addToCart} />
       <Footer />

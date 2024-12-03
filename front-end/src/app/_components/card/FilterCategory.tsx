@@ -43,8 +43,11 @@ const AllFood = () => {
   };
 
   useEffect(() => {
-    setFilteredFoodData(foodData);
     fetchData();
+  }, []);
+
+  useEffect(() => {
+    setFilteredFoodData(foodData); // Display all foods by default
   }, [foodData]);
 
   // Handle category filtering
@@ -85,7 +88,7 @@ const AllFood = () => {
             selectedCategory === "" ? "bg-green-500 text-white" : "bg-gray-200"
           }`}
         >
-          бүх хоол
+          Бүх хоол
         </button>
         {uniqueCategories.map((category) => (
           <button
