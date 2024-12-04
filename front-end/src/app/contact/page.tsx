@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Footer } from "../_components/footer/Footer";
 import { Header } from "../_components/header/Header";
 
@@ -5,7 +6,7 @@ export default function Home() {
   return (
     <div className="w-full">
       <Header />
-      <div className="container m-auto mt-[300px] mb-[300px]">
+      <div className="container max-w-[1160px] m-auto mt-[300px] mb-[300px]">
         <p>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non tempora,
           officiis soluta excepturi labore ullam nam, deleniti impedit qui,
@@ -20,9 +21,14 @@ export default function Home() {
           nisi atque veniam, ducimus magni assumenda vero alias distinctio
           aspernatur.
         </p>
-        <p className="font-extrabold text-[100px] text-red-500">
-          +976 8093 3171
-        </p>
+        <div className="flex">
+          <p className="font-extrabold text-[100px] text-red-500">
+            +976 8093 317
+          </p>
+          <Link href="/admin">
+            <p className="font-extrabold text-[100px] text-red-500">1</p>
+          </Link>
+        </div>
       </div>
       <Footer />
     </div>

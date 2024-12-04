@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import RecipeDialog from "./RecipeDialog";
 import { uniqueId } from "lodash";
+import { BACKEND_POINT } from "@/app/constant";
 
 export type FoodItem = {
   _id: string;
@@ -33,9 +34,7 @@ const AllFood = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_POINT}/api/foods`
-      );
+      const response = await fetch(`${BACKEND_POINT}/api/foods`);
       const responsedata = await response.json();
       const realData = responsedata?.data;
       setFoodData(realData);

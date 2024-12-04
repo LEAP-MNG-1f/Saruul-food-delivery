@@ -4,6 +4,7 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import DeleteIcon from "@mui/icons-material/Delete";
 import BadgeVisibility from "./AddCountInModul";
 import axios from "axios";
+import { BACKEND_POINT } from "@/app/constant";
 
 export interface CartItem extends FoodItem {
   quantity: number;
@@ -79,7 +80,7 @@ export const OrderSummary = () => {
 
       // Send POST request to create order
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_BACKEND_POINT}/api/orders`,
+        `${BACKEND_POINT}/api/orders`,
         orderPayload
       );
 

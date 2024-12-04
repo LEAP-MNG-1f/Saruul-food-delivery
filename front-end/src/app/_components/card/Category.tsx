@@ -4,9 +4,9 @@ import StarsIcon from "@mui/icons-material/Stars";
 import { groupBy } from "lodash";
 import { FoodItem } from "./FilterCategory";
 import RecipeDialog from "./RecipeDialog";
+import { BACKEND_POINT } from "@/app/constant";
 
 export const Category = ({}) => {
-  const BACKEND_POINT = process.env.NEXT_PUBLIC_BACKEND_POINT;
   const [open, setOpen] = useState(false);
   const [foodDatas, setFoodDatas] = useState<FoodItem[]>([]);
   const [selectedRecipe, setSelectedRecipe] = useState<FoodItem | null>(null);

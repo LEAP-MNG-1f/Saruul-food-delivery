@@ -4,7 +4,7 @@ export const Footer = () => {
   return (
     <div>
       <div className="flex w-full flex-col">
-        <div className="h-[600px] place-items-center bg-green-600 flex flex-col justify-center items-center gap-8">
+        <div className="h-[600px] place-items-center bg-blue-600 flex flex-col justify-center items-center gap-8">
           <p className="text-white font-extrabold text-[40px]">
             Saruul's food delivery
           </p>

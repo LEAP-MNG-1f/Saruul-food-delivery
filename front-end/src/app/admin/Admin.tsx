@@ -4,6 +4,7 @@ import CreateFoodModal from "./AddModal";
 import { FoodItem } from "../_components/card/FilterCategory";
 import CreateFood from "./CreateFood";
 import Link from "next/link";
+import { BACKEND_POINT } from "../constant";
 
 const MainAdminPage: React.FC = () => {
   const [foodsData, setFoodsData] = useState<FoodItem[]>([]);
@@ -13,9 +14,7 @@ const MainAdminPage: React.FC = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_POINT}/api/foods`
-      );
+      const response = await fetch(`${BACKEND_POINT}/api/foods`);
       const responsedata = await response.json();
       const realData = responsedata?.data;
       setFoodsData(realData);
@@ -77,7 +76,7 @@ const MainAdminPage: React.FC = () => {
       <div className="flex-1 w-[69.2vw] p-6 bg-gray-50">
         <button
           onClick={() => setIsModalOpenFood(true)}
-          className="bg-[#18BA51] px-4 py-2 text-[#fff] text-base font-normal rounded mb-5"
+          className="bg-[#18BA51] px-4 py-2 text-[#fff] text-base font-normal rounded mb-5 mr-4"
         >
           Add new food
         </button>
